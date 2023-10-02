@@ -7,6 +7,9 @@
       <Diagram DiagramId="9d2a07d760854246a183aa75544ad046" Name="Diagram1">
         <EntityTypeShape EntityType="testModel.tbl_awards" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="testModel.tbl_Research" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.tbl_doctors" Width="1.5" PointX="5.625" PointY="3.875" />
+        <EntityTypeShape EntityType="testModel.tbl_skills" Width="1.5" PointX="3.375" PointY="4.125" />
+        <AssociationConnector Association="testModel.FK_tbl_doctors_tbl_doctors" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
