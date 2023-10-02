@@ -13,15 +13,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="discription" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="tbl_doctors">
-          <Key>
-            <PropertyRef Name="pkID" />
-          </Key>
-          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Family" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fkskills" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbl_Research">
           <Key>
             <PropertyRef Name="pkID" />
@@ -29,34 +20,9 @@
           <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="tbl_skills">
-          <Key>
-            <PropertyRef Name="pkID" />
-          </Key>
-          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="skills" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_tbl_doctors_tbl_doctors">
-          <End Role="tbl_doctors" Type="Self.tbl_doctors" Multiplicity="1" />
-          <End Role="tbl_doctors1" Type="Self.tbl_doctors" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_doctors">
-              <PropertyRef Name="pkID" />
-            </Principal>
-            <Dependent Role="tbl_doctors1">
-              <PropertyRef Name="pkID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="testModelStoreContainer">
           <EntitySet Name="tbl_awards" EntityType="Self.tbl_awards" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_doctors" EntityType="Self.tbl_doctors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Research" EntityType="Self.tbl_Research" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_skills" EntityType="Self.tbl_skills" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_tbl_doctors_tbl_doctors" Association="Self.FK_tbl_doctors_tbl_doctors">
-            <End Role="tbl_doctors" EntitySet="tbl_doctors" />
-            <End Role="tbl_doctors1" EntitySet="tbl_doctors" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -71,17 +37,6 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="discription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tbl_doctors">
-          <Key>
-            <PropertyRef Name="pkID" />
-          </Key>
-          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="fkskills" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbl_doctors1" Relationship="Self.FK_tbl_doctors_tbl_doctors" FromRole="tbl_doctors" ToRole="tbl_doctors1" />
-          <NavigationProperty Name="tbl_doctors2" Relationship="Self.FK_tbl_doctors_tbl_doctors" FromRole="tbl_doctors1" ToRole="tbl_doctors" />
-        </EntityType>
         <EntityType Name="tbl_Research">
           <Key>
             <PropertyRef Name="pkID" />
@@ -89,34 +44,9 @@
           <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="tbl_skills">
-          <Key>
-            <PropertyRef Name="pkID" />
-          </Key>
-          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="skills" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_tbl_doctors_tbl_doctors">
-          <End Role="tbl_doctors" Type="Self.tbl_doctors" Multiplicity="1" />
-          <End Role="tbl_doctors1" Type="Self.tbl_doctors" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_doctors">
-              <PropertyRef Name="pkID" />
-            </Principal>
-            <Dependent Role="tbl_doctors1">
-              <PropertyRef Name="pkID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="htdata" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_awards" EntityType="Self.tbl_awards" />
-          <EntitySet Name="tbl_doctors" EntityType="Self.tbl_doctors" />
           <EntitySet Name="tbl_Research" EntityType="Self.tbl_Research" />
-          <EntitySet Name="tbl_skills" EntityType="Self.tbl_skills" />
-          <AssociationSet Name="FK_tbl_doctors_tbl_doctors" Association="Self.FK_tbl_doctors_tbl_doctors">
-            <End Role="tbl_doctors" EntitySet="tbl_doctors" />
-            <End Role="tbl_doctors1" EntitySet="tbl_doctors" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -133,29 +63,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_doctors">
-            <EntityTypeMapping TypeName="testModel.tbl_doctors">
-              <MappingFragment StoreEntitySet="tbl_doctors">
-                <ScalarProperty Name="pkID" ColumnName="pkID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Family" ColumnName="Family" />
-                <ScalarProperty Name="fkskills" ColumnName="fkskills" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Research">
             <EntityTypeMapping TypeName="testModel.tbl_Research">
               <MappingFragment StoreEntitySet="tbl_Research">
                 <ScalarProperty Name="pkID" ColumnName="pkID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_skills">
-            <EntityTypeMapping TypeName="testModel.tbl_skills">
-              <MappingFragment StoreEntitySet="tbl_skills">
-                <ScalarProperty Name="pkID" ColumnName="pkID" />
-                <ScalarProperty Name="skills" ColumnName="skills" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

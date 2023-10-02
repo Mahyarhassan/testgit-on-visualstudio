@@ -6,10 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9d2a07d760854246a183aa75544ad046" Name="Diagram1">
         <EntityTypeShape EntityType="testModel.tbl_awards" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testModel.tbl_doctors" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="testModel.tbl_Research" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testModel.tbl_skills" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="testModel.FK_tbl_doctors_tbl_doctors" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
