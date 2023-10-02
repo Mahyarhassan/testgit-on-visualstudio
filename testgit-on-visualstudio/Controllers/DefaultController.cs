@@ -14,10 +14,10 @@ namespace testgit_on_visualstudio.Controllers
         {
             htdata context = new htdata();
 
-            var docs = context.tbl_doctors.Count();
-            var dep = context.tbl_skills.Count();
-            var research = context.tbl_Research.Count();
-            var awards = context.tbl_awards.Count();
+            int docs = context.tbl_doctors.Count();
+            int dep = context.tbl_skills.Count();
+            int research = context.tbl_Research.Count();
+            int awards = context.tbl_awards.Count();
 
             ViewBag.doc = docs;
             ViewBag.dep = dep;
