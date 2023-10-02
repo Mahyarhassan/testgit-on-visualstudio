@@ -19,7 +19,7 @@ namespace testgit_on_visualstudio.Controllers
             int research = context.tbl_Research.Count();
             int awards = context.tbl_awards.Count();
 
-            ViewBag.doc = docs;
+            ViewBag.docs = docs;
             ViewBag.dep = dep;
             ViewBag.research = research;
             ViewBag.awards = awards;
