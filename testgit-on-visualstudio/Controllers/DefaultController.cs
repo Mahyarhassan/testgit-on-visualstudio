@@ -4,15 +4,18 @@ using System.Linq;
 using System.Web;
 using testgit_on_visualstudio.Models;
 using System.Web.Mvc;
+using System.Runtime.Remoting.Contexts;
 
 namespace testgit_on_visualstudio.Controllers
 {
     public class DefaultController : Controller
     {
+
+        htdata context = new htdata();
         // GET: Default
         public ActionResult Index()
         {
-            htdata context = new htdata();
+            
 
             int docs = context.tbl_doctors.Count();
             int dep = context.tbl_skills.Count();
@@ -28,6 +31,29 @@ namespace testgit_on_visualstudio.Controllers
 
             return View();
         }
+
+        public ActionResult getdep()
+        {
+
+            var dep = context.tbl_skills.Select(x => new {x.pkID , x.skills}).ToList();
+            return Json(dep, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult getdoc()
+        {
+
+            var doc = context.tbl_doctors.Select(x => new { x.pkID, x.Name , x.Family }).ToList();
+            return Json(doc, JsonRequestBehavior.AllowGet);
+
+        }
+        //public ActionResult getvisit()
+        //{
+
+        //    var visit = context.tbl_visit.Select(x => new { x. }).ToList();
+        //    return Json(visit, JsonRequestBehavior.AllowGet);
+
+        //}
+
 
 
 
