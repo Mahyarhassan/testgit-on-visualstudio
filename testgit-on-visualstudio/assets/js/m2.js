@@ -30,13 +30,13 @@
         .done(function (res) {
             console.log(res)
 
-            for (var item in res) {
-                $("#doctor").append(
+            //for (var item in res) {
+            //    $("#doctor").append(
 
-                    "<option>" + res[item].pkID + res[item].Name +" " + res[item].Family + "</option>"
+            //        "<option>" + res[item].pkID + res[item].Name +" " + res[item].Family + "</option>"
 
-                )
-            }
+            //    )
+            //}
 
         })
         .fail(function () {
