@@ -2,12 +2,15 @@
 
     $.post("/Default/getdep")
 
+    
+
         .done(function (res) {
+            console.log(res)
 
             for (var item in res) { 
-            $("#department").apend(
+            $("#department").append(
 
-                "<option>" + res[item].pkID + res[item].skill + "</option>"
+                "<option>" + res[item].pkID + res[item].skills + "</option>"
 
             )}
            
@@ -22,13 +25,15 @@
 
 
     $.post("/Default/getdoc")
+    
 
         .done(function (res) {
+            console.log(res)
 
             for (var item in res) {
-                $("#doctors").apend(
+                $("#doctor").append(
 
-                    "<option>" + res[item].pkID + res[item].Name + + res[item].Family + "</option>"
+                    "<option>" + res[item].pkID + res[item].Name +" " + res[item].Family + "</option>"
 
                 )
             }
