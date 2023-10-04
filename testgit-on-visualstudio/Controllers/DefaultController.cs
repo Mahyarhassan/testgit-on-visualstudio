@@ -39,10 +39,10 @@ namespace testgit_on_visualstudio.Controllers
             return Json(dep, JsonRequestBehavior.AllowGet);
 
         }
-        public ActionResult getdoc(dep)
+        public ActionResult getdoc( int dep)
         {
 
-            var doc = context.tbl_doctors.Where(x => x.fkskills = dep).Select(x => new { x.pkID, x.Name , x.Family }).ToList();
+            var doc = context.tbl_doctors.Where(x => x.fkskills == dep).Select(x => new { x.pkID, x.Name , x.Family }).ToList();
             return Json(doc, JsonRequestBehavior.AllowGet);
 
         }

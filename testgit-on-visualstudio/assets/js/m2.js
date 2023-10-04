@@ -33,7 +33,7 @@
         alert(e);
 
 
-        $.post("/Default/getdoc", e)
+        $.post("/Default/getdoc", { e })
 
 
         .done(function (res) {
