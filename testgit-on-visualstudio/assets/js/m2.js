@@ -29,34 +29,33 @@
         var dep = $('#department').val();
         var dep2 = dep.split("-")
 
-        var e = dep2[0];
-        alert(e);
+        var e2 = dep2[0];
+        
+        $.post("/Default/getdoc", { e: e2 })
 
 
-        $.post("/Default/getdoc", { e })
+            .done(function (res) {
+                
 
 
-        .done(function (res) {
-            console.log(res)
 
 
-            
+                for (var item in res) {
+                    $("#doctor").empty();
+                    $("#doctor").append(
 
-            //for (var item in res) {
-            //    $("#doctor").append(
+                        "<option> انتخاب دکتر</option>"+"<option>" + res[item].pkID + res[item].Name + " " + res[item].Family + "</option>"
 
-            //        "<option>" + res[item].pkID + res[item].Name +" " + res[item].Family + "</option>"
+                    )
+                }
 
-            //    )
-            //}
+            })
+            .fail(function () {
 
-        })
-        .fail(function () {
+            })
+            .always(function () {
 
-        })
-        .always(function () {
-
-        })
+            })
 
         //$.ajax({
         //    type: "POST",
@@ -70,12 +69,7 @@
         //    error: function (error) {
         //        alert("There was an error posting the data to the server: " + error.responseText);
         //    }
-        //});
-
-
-
-
-        
+        //});  
     });
     
 
