@@ -31,7 +31,7 @@
 
         var e2 = dep2[0];
         
-        $.post("/Default/getdoc", { e: e2 })
+        $.post("/Default/getdoc", { e:e2 })
 
 
             .done(function (res) {
