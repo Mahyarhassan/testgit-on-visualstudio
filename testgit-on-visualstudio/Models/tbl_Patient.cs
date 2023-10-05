@@ -12,10 +12,10 @@ namespace testgit_on_visualstudio.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_doctors
+    public partial class tbl_Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_doctors()
+        public tbl_Patient()
         {
             this.tbl_Visit = new HashSet<tbl_Visit>();
         }
@@ -23,9 +23,8 @@ namespace testgit_on_visualstudio.Models
         public int pkID { get; set; }
         public string Name { get; set; }
         public string Family { get; set; }
-        public int fkskills { get; set; }
+        public string Mobile { get; set; }
     
-        public virtual tbl_skills tbl_skills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Visit> tbl_Visit { get; set; }
     }

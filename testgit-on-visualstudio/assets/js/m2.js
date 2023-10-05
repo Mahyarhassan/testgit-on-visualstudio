@@ -56,9 +56,46 @@
             .always(function () {
 
             })
-
-       
     });
+
+
+    $("#doctor").change(function (event) {
+        /* alert("You have Selected  :: " + $(this).val());*/
+        var doc = $('#doctor').val();
+        var doc2 = doc.split("-")
+
+        var e2 = doc2[0];
+
+        $.post("/Default/getVisit", { e: e2 })
+
+
+            .done(function (res) {
+
+
+
+
+
+                for (var item in res) {
+                    $("#Visit").empty();
+                    $("#Visit").append(
+
+                        "<option> انتخاب نوبت</option>" + "<option>" + res[item].pkID + " - " + res[item].PSDate + " | " + res[item].PSTime  +  "</option>"
+
+                    )
+                }
+
+            })
+            .fail(function () {
+
+            })
+            .always(function () {
+
+            })
+    });
+
+
+
+
     
 
 

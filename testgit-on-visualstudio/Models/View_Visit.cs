@@ -12,21 +12,25 @@ namespace testgit_on_visualstudio.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_doctors
+    public partial class View_Visit
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_doctors()
-        {
-            this.tbl_Visit = new HashSet<tbl_Visit>();
-        }
-    
         public int pkID { get; set; }
         public string Name { get; set; }
         public string Family { get; set; }
+        public string skills { get; set; }
+        public string PName { get; set; }
+        public string PFamily { get; set; }
+        public string Mobile { get; set; }
+        public System.DateTime SDate { get; set; }
+        public Nullable<System.DateTime> EDate { get; set; }
+        public string Type { get; set; }
         public int fkskills { get; set; }
-    
-        public virtual tbl_skills tbl_skills { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_Visit> tbl_Visit { get; set; }
+        public int fkDocID { get; set; }
+        public Nullable<int> fkVTID { get; set; }
+        public Nullable<int> fkPID { get; set; }
+        public string PSDate { get; set; }
+        public string PSTime { get; set; }
+        public string PEDate { get; set; }
+        public string PETime { get; set; }
     }
 }
