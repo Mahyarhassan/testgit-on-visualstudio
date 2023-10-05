@@ -29,5 +29,9 @@ namespace testgit_on_visualstudio.Models
         public virtual DbSet<tbl_Research> tbl_Research { get; set; }
         public virtual DbSet<tbl_doctors> tbl_doctors { get; set; }
         public virtual DbSet<tbl_skills> tbl_skills { get; set; }
+        public virtual DbSet<tbl_Patient> tbl_Patient { get; set; }
+        public virtual DbSet<tbl_Visit> tbl_Visit { get; set; }
+        public virtual DbSet<tbl_VisitType> tbl_VisitType { get; set; }
+        public virtual DbSet<View_Visit> View_Visit { get; set; }
     }
 }

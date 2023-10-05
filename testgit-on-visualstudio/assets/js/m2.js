@@ -27,7 +27,7 @@
     $("#department").change(function (event) {
         /* alert("You have Selected  :: " + $(this).val());*/
         var dep = $('#department').val();
-        var dep2 = dep.split("-")
+        var dep2 = dep.split("-");
 
         var e2 = dep2[0];
         
@@ -44,7 +44,7 @@
                     $("#doctor").empty();
                     $("#doctor").append(
 
-                        "<option> انتخاب دکتر</option>"+"<option>" + res[item].pkID + res[item].Name + " " + res[item].Family + "</option>"
+                        "<option> انتخاب دکتر</option>"+"<option>" + res[item].pkID +"-"+ res[item].Name + " " + res[item].Family + "</option>"
 
                     )
                 }
@@ -56,21 +56,47 @@
             .always(function () {
 
             })
-
-        //$.ajax({
-        //    type: "POST",
-        //    url: "/person/create",
-        //    dataType: "json",
-        //    contentType: "application/json; charset=utf-8",
-        //    data: jsonData,
-        //    success: function (result) {
-        //        console.log(result); //log to the console to see whether it worked
-        //    },
-        //    error: function (error) {
-        //        alert("There was an error posting the data to the server: " + error.responseText);
-        //    }
-        //});  
     });
+
+
+    $("#doctor").change(function (event) {
+        
+        var doc = $('#doctor').val();
+        var doc2 = doc.split("-");
+
+        var e2 = doc2[0];
+        console.log("hello doc");
+
+        $.post("/Default/getVisit", { e: e2 })
+
+
+            .done(function (res) {
+
+                console.log(res);
+
+
+
+                for (var item in res) {
+                    $("#Visit").empty();
+                    $("#Visit").append(
+
+                        "<option> انتخاب نوبت</option>" + "<option>" + res[item].pkID + " - " + res[item].PSDate + " | " + res[item].PSTime + "</option>"
+
+                    )
+                }
+
+            })
+            .fail(function () {
+
+            })
+            .always(function () {
+
+            });
+    });
+
+
+
+
     
 
 
