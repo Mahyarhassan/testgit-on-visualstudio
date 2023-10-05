@@ -46,13 +46,13 @@ namespace testgit_on_visualstudio.Controllers
             return Json(doc, JsonRequestBehavior.AllowGet);
 
         }
-        //public ActionResult getvisit()
-        //{
+        public ActionResult getVisit(int e)
+        {
 
-        //    var visit = context.tbl_visit.Select(x => new { x. }).ToList();
-        //    return Json(visit, JsonRequestBehavior.AllowGet);
+            var visit = context.View_Visit.Where(x => x.fkDocID == e && x.fkPID==null).Select(x => new { x.pkID,x.PSDate,x.PSTime}).ToList();
+            return Json(visit, JsonRequestBehavior.AllowGet);
 
-        //}
+        }
 
 
 
