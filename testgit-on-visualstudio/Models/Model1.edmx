@@ -71,32 +71,20 @@ warning 6002: The table/view '6359_test.6359_EMINEMh.View_Visit' does not have a
             <PropertyRef Name="Name" />
             <PropertyRef Name="Family" />
             <PropertyRef Name="skills" />
-            <PropertyRef Name="PName" />
-            <PropertyRef Name="PFamily" />
-            <PropertyRef Name="Mobile" />
             <PropertyRef Name="SDate" />
-            <PropertyRef Name="Type" />
-            <PropertyRef Name="fkskills" />
             <PropertyRef Name="fkDocID" />
           </Key>
           <Property Name="pkID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Family" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="skills" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PFamily" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Mobile" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="SDate" Type="datetime" Nullable="false" />
           <Property Name="EDate" Type="datetime" />
-          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fkskills" Type="int" Nullable="false" />
+          <Property Name="PSDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="PSTime" Type="varchar" MaxLength="8" />
           <Property Name="fkDocID" Type="int" Nullable="false" />
           <Property Name="fkVTID" Type="int" />
           <Property Name="fkPID" Type="int" />
-          <Property Name="PSDate" Type="nvarchar" MaxLength="10" />
-          <Property Name="PSTime" Type="varchar" MaxLength="8" />
-          <Property Name="PEDate" Type="nvarchar" MaxLength="10" />
-          <Property Name="PETime" Type="varchar" MaxLength="8" />
         </EntityType>
         <Association Name="FK_tbl_doctors_tbl_doctors">
           <End Role="tbl_skills" Type="Self.tbl_skills" Multiplicity="1" />
@@ -160,20 +148,13 @@ warning 6002: The table/view '6359_test.6359_EMINEMh.View_Visit' does not have a
     [View_Visit].[Name] AS [Name], 
     [View_Visit].[Family] AS [Family], 
     [View_Visit].[skills] AS [skills], 
-    [View_Visit].[PName] AS [PName], 
-    [View_Visit].[PFamily] AS [PFamily], 
-    [View_Visit].[Mobile] AS [Mobile], 
     [View_Visit].[SDate] AS [SDate], 
     [View_Visit].[EDate] AS [EDate], 
-    [View_Visit].[Type] AS [Type], 
-    [View_Visit].[fkskills] AS [fkskills], 
-    [View_Visit].[fkDocID] AS [fkDocID], 
-    [View_Visit].[fkVTID] AS [fkVTID], 
-    [View_Visit].[fkPID] AS [fkPID], 
     [View_Visit].[PSDate] AS [PSDate], 
     [View_Visit].[PSTime] AS [PSTime], 
-    [View_Visit].[PEDate] AS [PEDate], 
-    [View_Visit].[PETime] AS [PETime]
+    [View_Visit].[fkDocID] AS [fkDocID], 
+    [View_Visit].[fkVTID] AS [fkVTID], 
+    [View_Visit].[fkPID] AS [fkPID]
     FROM [6359_EMINEMh].[View_Visit] AS [View_Visit]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_tbl_doctors_tbl_doctors" Association="Self.FK_tbl_doctors_tbl_doctors">
@@ -224,7 +205,6 @@ warning 6002: The table/view '6359_test.6359_EMINEMh.View_Visit' does not have a
           <EntitySet Name="tbl_Patient" EntityType="testModel.tbl_Patient" />
           <EntitySet Name="tbl_Visit" EntityType="testModel.tbl_Visit" />
           <EntitySet Name="tbl_VisitType" EntityType="testModel.tbl_VisitType" />
-          <EntitySet Name="View_Visit" EntityType="testModel.View_Visit" />
           <AssociationSet Name="FK_tbl_Visit_tbl_doctors" Association="testModel.FK_tbl_Visit_tbl_doctors">
             <End Role="tbl_doctors" EntitySet="tbl_doctors" />
             <End Role="tbl_Visit" EntitySet="tbl_Visit" />
@@ -237,6 +217,7 @@ warning 6002: The table/view '6359_test.6359_EMINEMh.View_Visit' does not have a
             <End Role="tbl_VisitType" EntitySet="tbl_VisitType" />
             <End Role="tbl_Visit" EntitySet="tbl_Visit" />
           </AssociationSet>
+          <EntitySet Name="View_Visit" EntityType="testModel.View_Visit" />
         </EntityContainer>
         <EntityType Name="tbl_doctors">
           <Key>
@@ -301,39 +282,6 @@ warning 6002: The table/view '6359_test.6359_EMINEMh.View_Visit' does not have a
           <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_Visit" Relationship="testModel.FK_tbl_Visit_tbl_VisitType" FromRole="tbl_VisitType" ToRole="tbl_Visit" />
         </EntityType>
-        <EntityType Name="View_Visit">
-          <Key>
-            <PropertyRef Name="pkID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Family" />
-            <PropertyRef Name="skills" />
-            <PropertyRef Name="PName" />
-            <PropertyRef Name="PFamily" />
-            <PropertyRef Name="Mobile" />
-            <PropertyRef Name="SDate" />
-            <PropertyRef Name="Type" />
-            <PropertyRef Name="fkskills" />
-            <PropertyRef Name="fkDocID" />
-          </Key>
-          <Property Name="pkID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Family" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="skills" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PFamily" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="SDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EDate" Type="DateTime" Precision="3" />
-          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fkskills" Type="Int32" Nullable="false" />
-          <Property Name="fkDocID" Type="Int32" Nullable="false" />
-          <Property Name="fkVTID" Type="Int32" />
-          <Property Name="fkPID" Type="Int32" />
-          <Property Name="PSDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="PSTime" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="PEDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="PETime" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_tbl_Visit_tbl_doctors">
           <End Type="testModel.tbl_doctors" Role="tbl_doctors" Multiplicity="1" />
           <End Type="testModel.tbl_Visit" Role="tbl_Visit" Multiplicity="*" />
@@ -370,6 +318,27 @@ warning 6002: The table/view '6359_test.6359_EMINEMh.View_Visit' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="View_Visit">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Family" />
+            <PropertyRef Name="skills" />
+            <PropertyRef Name="SDate" />
+            <PropertyRef Name="fkDocID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="skills" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EDate" Type="DateTime" Precision="3" />
+          <Property Name="PSDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PSTime" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="fkDocID" Type="Int32" Nullable="false" />
+          <Property Name="fkVTID" Type="Int32" />
+          <Property Name="fkPID" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -444,20 +413,13 @@ warning 6002: The table/view '6359_test.6359_EMINEMh.View_Visit' does not have a
           <EntitySetMapping Name="View_Visit">
             <EntityTypeMapping TypeName="testModel.View_Visit">
               <MappingFragment StoreEntitySet="View_Visit">
-                <ScalarProperty Name="PETime" ColumnName="PETime" />
-                <ScalarProperty Name="PEDate" ColumnName="PEDate" />
-                <ScalarProperty Name="PSTime" ColumnName="PSTime" />
-                <ScalarProperty Name="PSDate" ColumnName="PSDate" />
                 <ScalarProperty Name="fkPID" ColumnName="fkPID" />
                 <ScalarProperty Name="fkVTID" ColumnName="fkVTID" />
                 <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
-                <ScalarProperty Name="fkskills" ColumnName="fkskills" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PSTime" ColumnName="PSTime" />
+                <ScalarProperty Name="PSDate" ColumnName="PSDate" />
                 <ScalarProperty Name="EDate" ColumnName="EDate" />
                 <ScalarProperty Name="SDate" ColumnName="SDate" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="PFamily" ColumnName="PFamily" />
-                <ScalarProperty Name="PName" ColumnName="PName" />
                 <ScalarProperty Name="skills" ColumnName="skills" />
                 <ScalarProperty Name="Family" ColumnName="Family" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

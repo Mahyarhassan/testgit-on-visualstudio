@@ -18,19 +18,12 @@ namespace testgit_on_visualstudio.Models
         public string Name { get; set; }
         public string Family { get; set; }
         public string skills { get; set; }
-        public string PName { get; set; }
-        public string PFamily { get; set; }
-        public string Mobile { get; set; }
         public System.DateTime SDate { get; set; }
         public Nullable<System.DateTime> EDate { get; set; }
-        public string Type { get; set; }
-        public int fkskills { get; set; }
+        public string PSDate { get; set; }
+        public string PSTime { get; set; }
         public int fkDocID { get; set; }
         public Nullable<int> fkVTID { get; set; }
         public Nullable<int> fkPID { get; set; }
-        public string PSDate { get; set; }
-        public string PSTime { get; set; }
-        public string PEDate { get; set; }
-        public string PETime { get; set; }
     }
 }
