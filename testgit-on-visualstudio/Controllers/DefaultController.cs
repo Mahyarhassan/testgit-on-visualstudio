@@ -5,6 +5,7 @@ using System.Web;
 using testgit_on_visualstudio.Models;
 using System.Web.Mvc;
 using System.Runtime.Remoting.Contexts;
+using System.ComponentModel;
 
 namespace testgit_on_visualstudio.Controllers
 {
@@ -55,6 +56,37 @@ namespace testgit_on_visualstudio.Controllers
             return Json(visit, JsonRequestBehavior.AllowGet);
             
 
+        }
+
+        public ActionResult setVisit (int vn , string name , string family ,string phone)
+        {
+
+            var a = context.tbl_Visit.Where(x=> x.fkPID==vn ).SingleOrDefault();
+
+            if (a == null)
+            {
+
+                tbl_Patient newP = new tbl_Patient();
+                newP.Name = name;
+                newP.Family = family;
+                newP.Mobile = phone;
+
+                context.tbl_Patient.Add(newP);
+                context.SaveChanges();
+
+
+
+            }
+
+
+
+            else
+            {
+
+            }
+
+
+            return Json(visit, JsonRequestBehavior.AllowGet);
         }
 
 
