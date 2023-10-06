@@ -95,7 +95,14 @@
                     )
                 }
                 
-                
+                var dop = document.getElementById("Visit").length;
+                console.log(dop)
+
+                if (dop == 1) {
+                    $("#Visit").empty();
+                    $("#Visit").append("<option> نوبتی موجود نیست </option>")
+
+                }
 
 
             })
