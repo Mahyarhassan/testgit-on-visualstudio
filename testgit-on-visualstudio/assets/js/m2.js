@@ -94,7 +94,7 @@
 
                     )
                 }
-                
+
                 //var dop = document.getElementById("Visit").length;
                 //console.log(dop)
 
@@ -115,9 +115,15 @@
             .always(function () {
 
             });
+
+
+
+
+
+
     });
 
-
+   
 
 
 
@@ -132,3 +138,45 @@
 
 }
 )
+$(document).ready(function () {
+
+
+        $(".cop").click(function () {
+
+            var name = $('#name').val();
+            var family = $('#family').val();
+            var phone = $('#phone').val();
+            var vn = $('#Visit').val();
+            var vn2 = vn.split("-");
+
+
+
+
+
+
+
+
+            $.post("/Default/setVisit", { name: name, family: family, phone: phone, vn: vn2[0] })
+
+                .done(function (res) {
+                    alert(res)
+
+
+                })
+
+                .fail(function () {
+
+
+                })
+
+                .always(function () {
+
+
+                });
+
+
+
+
+
+        })
+    })
