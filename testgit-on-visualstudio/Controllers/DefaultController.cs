@@ -61,32 +61,50 @@ namespace testgit_on_visualstudio.Controllers
         public ActionResult setVisit (int vn , string name , string family ,string phone)
         {
 
-            var a = context.tbl_Visit.Where(x=> x.fkPID==vn ).SingleOrDefault();
+            //var a = context.tbl_Visit.Where(x=> x.fkPID==vn ).SingleOrDefault();
+            var np = context.tbl_Patient.Where(x => x.Mobile == phone).SingleOrDefault();
+            var v = context.tbl_Visit.Where(x => x.pkID == vn).SingleOrDefault();
+            var res = 0;
+            if (v.fkPID == null) {
+            res = 1;
+                if (np == null)
+                {
 
-            if (a == null)
-            {
+                    tbl_Patient newP = new tbl_Patient();
+                    newP.Name = name;
+                    newP.Family = family;
+                    newP.Mobile = phone;
 
-                tbl_Patient newP = new tbl_Patient();
-                newP.Name = name;
-                newP.Family = family;
-                newP.Mobile = phone;
+                    context.tbl_Patient.Add(newP);
+                    //context.SaveChanges();
 
-                context.tbl_Patient.Add(newP);
+
+
+                }
+
+                v.EDate = v.SDate.AddMinutes(20);
+                v.fkVTID = 1;
+                v.fkPID = np.pkID;
                 context.SaveChanges();
 
 
 
             }
-
-
-
             else
             {
-
+                res = 2;
             }
 
 
-            return Json(visit, JsonRequestBehavior.AllowGet);
+
+
+
+
+
+
+
+
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
 
 
