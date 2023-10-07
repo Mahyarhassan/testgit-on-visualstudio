@@ -159,7 +159,18 @@ $(document).ready(function () {
             $.post("/Default/setVisit", { name: name, family: family, phone: phone, vn: vn2[0] })
 
                 .done(function (res) {
-                    alert(res)
+                    switch (res) {
+                        case 1: alert("نوبت شما ثبت شد ");
+
+
+
+                            break;
+                        case 2: alert("نوبت پر است ");
+                            break;
+
+                       
+                       
+                    }
 
 
                 })

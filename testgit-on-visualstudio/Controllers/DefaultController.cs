@@ -96,14 +96,6 @@ namespace testgit_on_visualstudio.Controllers
             }
 
 
-
-
-
-
-
-
-
-
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
