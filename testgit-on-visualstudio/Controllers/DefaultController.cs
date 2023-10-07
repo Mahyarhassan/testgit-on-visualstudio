@@ -32,7 +32,7 @@ namespace testgit_on_visualstudio.Controllers
 
             return View();
         }
-
+        [HttpPost]
         public ActionResult getdep()
         {
 
@@ -40,6 +40,7 @@ namespace testgit_on_visualstudio.Controllers
             return Json(dep, JsonRequestBehavior.AllowGet);
 
         }
+        [HttpPost]
         public ActionResult getdoc(int e)
         {
 
@@ -47,6 +48,7 @@ namespace testgit_on_visualstudio.Controllers
             return Json(doc, JsonRequestBehavior.AllowGet);
 
         }
+        [HttpPost]
         public ActionResult getVisit(int e)
         {
 
@@ -57,7 +59,8 @@ namespace testgit_on_visualstudio.Controllers
             
 
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult setVisit (int vn , string name , string family ,string phone)
         {
 
