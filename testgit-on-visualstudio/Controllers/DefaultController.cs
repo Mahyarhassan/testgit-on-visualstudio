@@ -5,6 +5,7 @@ using System.Web;
 using testgit_on_visualstudio.Models;
 using System.Web.Mvc;
 using System.Runtime.Remoting.Contexts;
+using System.ComponentModel;
 
 namespace testgit_on_visualstudio.Controllers
 {
@@ -31,7 +32,7 @@ namespace testgit_on_visualstudio.Controllers
 
             return View();
         }
-
+        [HttpPost]
         public ActionResult getdep()
         {
 
@@ -39,6 +40,7 @@ namespace testgit_on_visualstudio.Controllers
             return Json(dep, JsonRequestBehavior.AllowGet);
 
         }
+        [HttpPost]
         public ActionResult getdoc(int e)
         {
 
@@ -46,12 +48,58 @@ namespace testgit_on_visualstudio.Controllers
             return Json(doc, JsonRequestBehavior.AllowGet);
 
         }
+        [HttpPost]
         public ActionResult getVisit(int e)
         {
 
+            
             var visit = context.View_Visit.Where(x => x.fkDocID == e && x.fkPID==null).Select(x => new { x.pkID,x.PSDate,x.PSTime}).ToList();
+            
             return Json(visit, JsonRequestBehavior.AllowGet);
+            
 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult setVisit (int vn , string name , string family ,string phone)
+        {
+
+            //var a = context.tbl_Visit.Where(x=> x.fkPID==vn ).SingleOrDefault();
+            var np = context.tbl_Patient.Where(x => x.Mobile == phone).SingleOrDefault();
+            var v = context.tbl_Visit.Where(x => x.pkID == vn).SingleOrDefault();
+            var res = 0;
+            if (v.fkPID == null) {
+            res = 1;
+                if (np == null)
+                {
+
+                    tbl_Patient newP = new tbl_Patient();
+                    newP.Name = name;
+                    newP.Family = family;
+                    newP.Mobile = phone;
+
+                    context.tbl_Patient.Add(newP);
+                    //context.SaveChanges();
+
+
+
+                }
+
+                v.EDate = v.SDate.AddMinutes(20);
+                v.fkVTID = 1;
+                v.fkPID = np.pkID;
+                context.SaveChanges();
+
+
+
+            }
+            else
+            {
+                res = 2;
+            }
+
+
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
 
 
