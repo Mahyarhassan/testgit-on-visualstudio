@@ -156,7 +156,7 @@ $(document).ready(function () {
 
 
 
-            $.post("/Default/setVisit", { name: name, family: family, phone: phone, vn: vn2[0] })
+            $.post("/Default/setVisit", { name: name, family: family, phone: phone, vn: vn2[0], __RequestVerificationToken: $(input[name = "__RequestVerificationToken"]).val })
 
                 .done(function (res) {
                     switch (res) {
